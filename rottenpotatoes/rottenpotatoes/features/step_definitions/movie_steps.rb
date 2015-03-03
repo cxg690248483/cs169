@@ -40,3 +40,8 @@ Then /I should see all the movies/ do
   assert Movie.count == 10
   # Make sure that all the movies in the app are visible in the table
 end
+
+Then /^the director of "(.*?)" should be "(.*?)"$/ do |arg1, arg2|
+  movie = Movie.find_by_title(arg1)
+  assert movie.director == arg2, "#{arg1}'s director should not be #{arg2}"
+end
